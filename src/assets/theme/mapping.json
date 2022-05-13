@@ -1,0 +1,135 @@
+{
+    "strict": {
+      "text-font-family": "Montserrat-Regular",
+      "text-font-weight": "normal",
+      
+      "text-heading-1-font-family": "Montserrat-SemiBold",
+      "text-heading-1-font-weight": "normal",
+  
+      "text-heading-2-font-family": "Montserrat-SemiBold",
+      "text-heading-2-font-weight": "normal",
+  
+      "text-heading-3-font-family": "Montserrat-SemiBold",
+      "text-heading-3-font-weight": "normal",
+  
+      "text-heading-4-font-family": "Montserrat-SemiBold",
+      "text-heading-4-font-weight": "normal",
+  
+      "text-heading-5-font-family": "Montserrat-SemiBold",
+      "text-heading-5-font-weight": "normal",
+  
+      "text-heading-6-font-family": "Montserrat-SemiBold",
+      "text-heading-6-font-weight": "normal",
+      "text-heading-6-font-size": 17,
+  
+      
+      "text-subtitle-1-font-family": "Montserrat-Light",
+      "text-subtitle-1-font-weight": "normal",
+  
+      "text-subtitle-2-font-family": "Montserrat-Light",
+      "text-subtitle-2-font-weight": "normal",
+  
+      "text-paragraph-1-font-family": "Montserrat-Regular",
+      "text-paragraph-1-font-weight": "normal",
+  
+      "text-paragraph-2-font-family": "Montserrat-Regular",
+      "text-paragraph-2-font-weight": "normal",
+  
+      "text-caption-1-font-family": "Montserrat-Light",
+      "text-caption-1-font-weight": "normal",
+  
+      "text-caption-2-font-family": "Montserrat-Light",
+      "text-caption-2-font-weight": "normal",
+  
+      "text-label-font-family": "Montserrat-SemiBold",
+      "text-label-font-weight": "normal"
+    },
+    "components": {
+      "Card": {
+        "appearances": {
+          "outline": {
+            "mapping": {
+              "bodyPaddingHorizontal": 16,
+              "bodyPaddingVertical": 16
+            }
+          }
+        }
+      },
+      "Tab": {
+        "appearances": {
+          "default": {
+            "mapping": {
+              "textFontFamily":"Montserrat-SemiBold",
+              "textFontWeight": "normal"
+            }
+          }
+        }
+      },
+      "Button": {
+        "appearances": {
+          "filled": {
+            "mapping": {
+              "textFontFamily": "Montserrat-SemiBold"
+            },
+            "variantGroups": {
+              "status" :{
+                "basic" :{
+                  "textColor" :"#2DDA93",
+                  "backgroundColor":"white",
+                  "borderColor" :"white"
+                }
+              },
+              "size" :{
+                "tiny" :{
+                  "borderRadius": 10,
+                  "textFontWeight" :"normal"
+                },
+                "small" :{
+                  "borderRadius": 10,
+                  "paddingVertical": 13,
+                  "textFontWeight" :"normal"
+                },
+                "medium" :{
+                  "borderRadius": 10,
+                  "paddingVertical": 15,
+                  "textFontWeight" :"normal"
+                },
+                "large" :{
+                  "borderRadius": 10,
+                  "paddingVertical": 15,
+                  "textFontWeight" :"normal"
+                },
+                "giant" :{
+                  "borderRadius": 10,
+                  "paddingVertical": 15,
+                  "textFontWeight" :"normal"
+                } 
+              }
+            }
+          },
+          "outline": {
+            "variantGroups": {
+              "status" :{
+                "primary" :{
+                  "backgroundColor" :"white",
+                  "state": {
+                    "active": {
+                        "backgroundColor": "#F2F2F2"
+                    }
+                  }
+                },
+                "basic" :{
+                  "backgroundColor" :"white",
+                  "state": {
+                    "active": {
+                        "backgroundColor": "#F2F2F2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
