@@ -16,7 +16,9 @@ const Pokemon: FC<PokemonResultProps> = (props) => {
 
     return (
         <View style={styles.wrapper}>
-            <TouchableNativeFeedback onPress={() => navigation.navigate("PokemonShow", { name: props.name })}>
+            <TouchableNativeFeedback
+                background={TouchableNativeFeedback.Ripple(color.ripple, false)}
+                onPress={() => navigation.navigate("PokemonShow", { name: props.name })}>
                 <View style={[styles.card, getColor()]}>
                     <View style={theme.toCenter}>
                         <Image source={{ uri: props.image }} style={styles.img} />

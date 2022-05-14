@@ -23,10 +23,14 @@ const PokemonDetailHeader: FC<Props> = ({ pokemonNumber }) => {
             <StatusBar translucent backgroundColor={"transparent"} />
             <View style={styles.spacer} />
             <View style={styles.header}>
-                <TouchableOpacity style={styles.action} onPress={() => navigation.goBack()}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Icon name='arrow-back-outline' fill={color.white} style={styles.icon} />
                 </TouchableOpacity>
                 <Text status={"control"} category="h5" style={styles.title}>{getTitle()}</Text>
+                <TouchableOpacity onPress={() => navigation.navigate("PokemonCatch", { number: pokemonNumber })}>
+                    <Icon name='external-link-outline' fill={color.white} style={styles.icon} />
+                </TouchableOpacity>
+
             </View>
         </>
     )
@@ -39,19 +43,15 @@ const styles = StyleSheet.create({
         paddingVertical: 24,
         backgroundColor: "transparent",
         paddingHorizontal: constant.container,
+        ...theme.flexBetween,
+        zIndex: 99999999
     },
     spacer: {
         height: 28
     },
     title: {
         textAlign: "center",
-        ...theme.fontBold
-    },
-    action: {
-        position: "absolute",
-        left: constant.container,
-        top: 22,
-        zIndex: 99999
+        ...theme.fontBold,
     },
     icon: {
         height: 28,

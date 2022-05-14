@@ -23,3 +23,13 @@ export interface StatsResultProps {
     speedDefense: number,
     speed: number
 }
+
+export interface SearchStateProps {
+    data: string
+}
+
+
+export interface ReducerProps {
+    type: string,
+    payload: any
+}

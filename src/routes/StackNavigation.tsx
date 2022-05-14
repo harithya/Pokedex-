@@ -1,6 +1,6 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AnimationScreen, HomeScreen, PokemonShowScreen, SplashScreen } from '@pages';
+import { AnimationScreen, HomeScreen, PokemonCatchScreen, PokemonShowScreen, SplashScreen } from '@pages';
 
 
 const Stack = createNativeStackNavigator();
@@ -10,6 +10,7 @@ export default function StackNavigation() {
             <Stack.Screen name="Splash" component={SplashScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="PokemonShow" component={PokemonShowScreen} />
+            <Stack.Screen name="PokemonCatch" component={PokemonCatchScreen} />
         </Stack.Navigator>
     )
 }
