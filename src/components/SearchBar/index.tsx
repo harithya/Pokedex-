@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: constant.container,
         marginTop: -28,
+
     },
     searchbar: {
         backgroundColor: color.white,

@@ -28,8 +28,6 @@ const PokemonDetailLayout: FC<Props> = ({ children, isLoading }) => {
         easing: Easing.ease
     })
 
-    console.log(pokemonDetailState.data)
-
     const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
         headerAnimation.setValue(event.nativeEvent.contentOffset.y - 50);
     }

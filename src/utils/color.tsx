@@ -3,7 +3,7 @@ const color = {
     success: '#1D8E1F',
     info: '#007B84',
     warning: '#9E480B',
-    danger: '#9B1A2F',
+    danger: '#F54242',
     white: '#ffffff',
     default: 'rgba(143, 155, 179, 0.8)',
     border: '#dde1eb',

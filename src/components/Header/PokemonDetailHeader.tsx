@@ -21,7 +21,6 @@ const PokemonDetailHeader: FC<Props> = ({ animation }) => {
         }
     }
 
-
     return (
         <>
             <StatusBar translucent backgroundColor={"transparent"} />

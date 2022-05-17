@@ -11,6 +11,7 @@ import { LogBox } from 'react-native'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
 import store from 'src/redux/store'
+import FlashMessage from 'react-native-flash-message'
 
 LogBox.ignoreAllLogs();
 
@@ -23,6 +24,7 @@ const App: FC = () => {
           <IconRegistry icons={EvaIconsPack} />
           <ApplicationProvider {...eva} theme={{ ...eva.light, ...Color }} customMapping={{ ...eva.mapping, ...Mapping }}>
             <StackNavigation />
+            <FlashMessage position={"center"} />
           </ApplicationProvider>
         </NavigationContainer>
       </QueryClientProvider>

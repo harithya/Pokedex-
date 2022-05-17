@@ -24,7 +24,7 @@ const PokemonShowScreen: FC<PageProps<'PokemonShow'>> = ({ route }) => {
             dispatch(setPokemonDetail({
                 num: data?.num,
                 name: data?.name,
-                hp: detail?.types[0],
+                hp: detail?.stats["hp"],
                 colorTheme: helper.getPokemmonColor(detail?.types[0])
             }))
         }

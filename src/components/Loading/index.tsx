@@ -1,9 +1,12 @@
-import { Animated, Easing, Image, StyleSheet, View } from 'react-native'
-import React, { useEffect, useRef } from 'react'
+import { Animated, Easing, Image, StyleProp, StyleSheet, TextStyle, View } from 'react-native'
+import React, { FC, useEffect, useRef } from 'react'
 import { theme } from '@utils'
 import { Text } from '@ui-kitten/components'
 
-const Loading = () => {
+interface Props {
+    style?: StyleProp<TextStyle>
+}
+const Loading: FC<Props> = ({ style }) => {
     const spinValue = useRef(new Animated.Value(0)).current;
     useEffect(() => {
         Animated.loop(Animated.timing(spinValue, {
@@ -27,7 +30,7 @@ const Loading = () => {
                     }]
                 }]}
             />
-            <Text style={theme.marginTop10} appearance="hint">Loading</Text>
+            <Text style={[theme.marginTop10, style]} appearance="hint">Loading</Text>
         </View>
     )
 }
