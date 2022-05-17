@@ -1,5 +1,5 @@
-import { StyleSheet, View } from 'react-native'
-import React, { FC } from 'react'
+import { Animated, StyleSheet, View } from 'react-native'
+import React, { FC, useRef, useEffect } from 'react'
 import { Text } from '@ui-kitten/components'
 import { color, constant, theme } from '@utils'
 
@@ -9,6 +9,26 @@ interface Props {
     value: number
 }
 const Statistic: FC<Props> = ({ colorTheme, title, value }) => {
+
+    const widthAnimation = useRef(new Animated.Value(0)).current
+    const widthInterpolate = widthAnimation.interpolate({
+        inputRange: [0, 100],
+        outputRange: [0, 1]
+    })
+
+    useEffect(() => {
+
+        const scaleX = Animated.timing(widthAnimation, {
+            toValue: 100,
+            duration: 1000,
+            useNativeDriver: true,
+        })
+        scaleX.reset();
+        scaleX.start();
+    }, [value])
+
+
+
     return (
         <View style={styles.stat}>
             <View style={styles.titleContainer}>
@@ -18,7 +38,13 @@ const Statistic: FC<Props> = ({ colorTheme, title, value }) => {
                 <Text category={"p2"} style={styles.value}>{value}</Text>
                 <View style={theme.flex1}>
                     <View style={styles.slider}>
-                        <View style={[styles.sliderValue, { width: `${(value - 40) < 0 ? 0 : value - 40}%`, backgroundColor: colorTheme }]} />
+                        <Animated.View style={[styles.sliderValue, {
+                            width: `${(value - 40) < 0 ? 0 : value - 40}%`,
+                            backgroundColor: colorTheme,
+                            transform: [{
+                                scaleX: widthInterpolate
+                            }]
+                        }]} />
                     </View>
                 </View>
             </View>
