@@ -1,11 +1,13 @@
 import { ScrollView, StyleSheet, View } from 'react-native'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { Badge, Evolution, Information, PokemonDetailLayout, Section, Statistic } from '@components'
-import { color, constant, helper, theme } from '@utils'
+import { constant, helper, theme } from '@utils'
 import { Text } from '@ui-kitten/components'
 import { http } from '@services'
 import { useQuery } from 'react-query'
 import { PageProps } from '@types'
+import { useDispatch } from 'react-redux'
+import { setPokemonDetail } from 'src/redux/actions/pokemonDetailAction'
 
 export const fetchPokemonDetail = async (name: string) => {
     const req = await http.get(`pokedex/${name}`)
@@ -16,11 +18,20 @@ const PokemonShowScreen: FC<PageProps<'PokemonShow'>> = ({ route }) => {
         () => fetchPokemonDetail(route.params.name));
     const detail = data?.variations[0]
 
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if (isSuccess) {
+            dispatch(setPokemonDetail({
+                num: data?.num,
+                name: data?.name,
+                hp: detail?.types[0],
+                colorTheme: helper.getPokemmonColor(detail?.types[0])
+            }))
+        }
+    }, [isSuccess, route.params.name])
+
     return (
-        <PokemonDetailLayout
-            pokemonNumber={data?.num}
-            color={helper.getPokemmonColor(detail?.types[0])}
-            isLoading={isLoading}>
+        <PokemonDetailLayout isLoading={isLoading}>
             {isSuccess &&
                 <View>
                     <Text style={styles.title} category="h4">{data.name}</Text>
@@ -75,20 +86,21 @@ const PokemonShowScreen: FC<PageProps<'PokemonShow'>> = ({ route }) => {
                         />
 
                     </Section>
-                    <Section title='Evolutions'>
-                        <ScrollView
-                            horizontal
-                            contentContainerStyle={styles.section}
-                            showsHorizontalScrollIndicator={false}>
-                            {detail?.evolutions.map((evolution: string, key: number) =>
-                                <Evolution
-                                    key={`evolution-${key}`}
-                                    name={evolution}
-                                    colortTheme={helper.getPokemmonColor(detail?.types[0])}
-                                    isLast={detail?.evolutions.length === key + 1}
-                                />)}
-                        </ScrollView>
-                    </Section>
+                    {detail?.evolutions.length > 0 &&
+                        <Section title='Evolutions'>
+                            <ScrollView
+                                horizontal
+                                contentContainerStyle={styles.section}
+                                showsHorizontalScrollIndicator={false}>
+                                {detail?.evolutions.map((evolution: string, key: number) =>
+                                    <Evolution
+                                        key={`evolution-${key}`}
+                                        name={evolution}
+                                        colortTheme={helper.getPokemmonColor(detail?.types[0])}
+                                        isLast={detail?.evolutions.length === key + 1}
+                                    />)}
+                            </ScrollView>
+                        </Section>}
                 </View>}
         </PokemonDetailLayout>
     )

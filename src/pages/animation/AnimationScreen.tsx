@@ -1,16 +1,34 @@
-import { Animated, Easing, ScrollView, StyleSheet, View } from 'react-native'
-import React, { useRef, useState } from 'react'
-import { color, constant, theme } from '@utils'
-import { Button, Text } from '@ui-kitten/components'
+import { Animated, FlatList, FlatListProps, NativeScrollEvent, NativeSyntheticEvent, StyleSheet, Text, View } from 'react-native'
+import React, { useRef } from 'react'
+import { color, helper } from '@utils'
 
 const AnimationScreen = () => {
-    // header opacity 0 to 1
+
+    const scrollY = useRef(new Animated.Value(0)).current
+
+    const scrollInterpolate = scrollY.interpolate({
+        inputRange: [0, 100],
+        outputRange: [1, 0],
+        extrapolate: "clamp"
+    })
+
+    const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+        scrollY.setValue(e.nativeEvent.contentOffset.y - 100);
+    }
     return (
         <View style={styles.container}>
-            <Animated.View style={[styles.header]} />
-            <Animated.ScrollView contentContainerStyle={styles.content}>
-                {new Array(10).fill(0).map((_, index) => <View key={index} style={styles.box} />)}
-            </Animated.ScrollView>
+            <Animated.View style={{
+                opacity: scrollInterpolate
+            }}>
+                <View style={styles.header} />
+            </Animated.View>
+            <FlatList
+                data={new Array(100).fill(0)}
+                contentContainerStyle={styles.contentContainer}
+                renderItem={({ item }) => <View style={styles.card} />}
+                keyExtractor={(item, index) => index.toString()}
+                onScroll={onScroll}
+            />
         </View>
     )
 }
@@ -19,21 +37,19 @@ export default AnimationScreen
 
 const styles = StyleSheet.create({
     container: {
-        ...theme.flex1,
-        backgroundColor: color.white
+        flex: 1,
+    },
+    card: {
+        height: 120,
+        backgroundColor: helper.hexToRgb("#f54242", 0.5),
+        marginBottom: 10
+    },
+    contentContainer: {
+        paddingHorizontal: 16,
+        paddingVertical: 16
     },
     header: {
-        height: 70,
-        backgroundColor: color.fire
-    },
-    content: {
-        paddingHorizontal: constant.container,
-        paddingVertical: 20,
-    },
-    box: {
-        height: 100,
-        backgroundColor: color.bug,
-        borderRadius: 10,
-        marginBottom: 20
+        backgroundColor: color.primary,
+        height: 100
     }
 })

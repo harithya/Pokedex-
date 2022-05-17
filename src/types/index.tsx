@@ -5,13 +5,22 @@ export type PageProps<RouteName extends keyof RootStackList = keyof RootStackLis
 export type useNavigationProps = NativeStackNavigationProp<RootStackList>;
 
 
-
 // Http Types
 export interface PokemonResultProps {
     num: number,
     name: string,
     image: string,
     type: string[],
+}
+
+
+export interface SearchStateProps {
+    data: string
+}
+
+export interface ReducerProps {
+    type: string,
+    payload: any
 }
 
 export interface StatsResultProps {
@@ -24,12 +33,14 @@ export interface StatsResultProps {
     speed: number
 }
 
-export interface SearchStateProps {
-    data: string
+
+export interface PokemonDetailProps {
+    num: number,
+    name: string,
+    hp: number,
+    colorTheme: string
+}
+export interface PokemonDetailStateProps {
+    data: PokemonDetailProps
 }
 
-
-export interface ReducerProps {
-    type: string,
-    payload: any
-}
