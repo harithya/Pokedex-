@@ -34,7 +34,7 @@ const PokemonDetailLayout: FC<Props> = ({ children, isLoading }) => {
     return (
         <View style={[theme.flex1, { backgroundColor: helper.hexToRgb(colorTheme, 0.7) }]}>
             <PokemonDetailHeader animation={headerInterpolate} />
-            {isLoading ? <Loading /> :
+            {isLoading ? <Loading style={styles.loading} background={color.primary} /> :
                 <ScrollView
                     scrollEventThrottle={16}
                     onScroll={onScroll}
@@ -91,5 +91,9 @@ const styles = StyleSheet.create({
     },
     spacer: {
         height: 125,
+    },
+    loading: {
+        color: color.white,
+        ...theme.fontMedium
     }
 })

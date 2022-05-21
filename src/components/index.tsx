@@ -11,6 +11,13 @@ import Section from "./Section";
 import Statistic from "./Statistic";
 import Information from "./Information";
 import Evolution from "./Items/Evolution";
+import DetailLayout from "./Layout/DetailLayout";
+import DetailHeader from "./Header/DetailHeader";
+import PokemonSave from "./Items/PokemonSave";
+import Drawer from "./Drawer";
+import Menu from "./Menu";
+import FooterLoading from "./Loading/FooterLoading";
+import Empty from "./Empty";
 
 export {
     MainLayout,
@@ -25,5 +32,12 @@ export {
     Section,
     Statistic,
     Information,
-    Evolution
+    Evolution,
+    DetailLayout,
+    DetailHeader,
+    PokemonSave,
+    Drawer,
+    Menu,
+    FooterLoading,
+    Empty
 }

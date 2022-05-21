@@ -76,12 +76,12 @@ const PokemonShowScreen: FC<PageProps<'PokemonShow'>> = ({ route }) => {
                         />
                         <Statistic
                             colorTheme={helper.getPokemmonColor(detail?.types[0])}
-                            title={"Attack Speed"}
+                            title={"SP Attack"}
                             value={detail?.stats["speedAttack"]}
                         />
                         <Statistic
                             colorTheme={helper.getPokemmonColor(detail?.types[0])}
-                            title={"Defense Speed "}
+                            title={"SP Defense"}
                             value={detail?.stats["speedDefense"]}
                         />
 

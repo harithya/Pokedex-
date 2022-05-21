@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Loading, MainLayout, Pokemon } from '@components'
+import { FooterLoading, Loading, MainLayout, Pokemon } from '@components'
 import { http } from '@services'
 import { PokemonResultProps, SearchStateProps } from '@types'
 import { useInfiniteQuery } from 'react-query'
@@ -18,7 +18,7 @@ const HomeScreen = () => {
         return req.data ?? []
     }
 
-    const { data, isLoading, isSuccess, hasNextPage, fetchNextPage } = useInfiniteQuery(["pokemon", searchState.data],
+    const { data, isLoading, isSuccess, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery(["pokemon", searchState.data],
         fetchData, {
         getNextPageParam: (data) => (data.page === data.totalPages) ? undefined : data.page + 1,
     })
@@ -32,6 +32,7 @@ const HomeScreen = () => {
                 contentContainerStyle={styles.flatlist}
                 keyExtractor={(val) => val.page}
                 onEndReached={handleLoadMore}
+                ListFooterComponent={() => isFetching ? <FooterLoading /> : null}
                 renderItem={({ item, index }) =>
                     <View key={`wrapper-${index}`} style={styles.wrapper}>
                         {item.data.map((val: PokemonResultProps) =>

@@ -44,3 +44,8 @@ export interface PokemonDetailStateProps {
     data: PokemonDetailProps
 }
 
+export interface PokemonSaveStateProps {
+    data: PokemonResultProps[]
+}
+
+

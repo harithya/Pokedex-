@@ -39,7 +39,7 @@ const Statistic: FC<Props> = ({ colorTheme, title, value }) => {
                 <View style={theme.flex1}>
                     <View style={styles.slider}>
                         <Animated.View style={[styles.sliderValue, {
-                            width: `${(value - 40) < 0 ? 0 : value - 40}%`,
+                            width: `${(value - 40) < 0 ? 0 : ((value - 40) > 100 ? 100 : value - 40)}%`,
                             backgroundColor: colorTheme,
                             transform: [{
                                 scaleX: widthInterpolate

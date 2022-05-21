@@ -6,10 +6,11 @@ import { PageProps, PokemonDetailStateProps, useNavigationProps } from '@types';
 import { Icon, Text } from '@ui-kitten/components';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { State } from 'src/redux/reducer';
 import { Loading } from '@components';
 import { showMessage } from 'react-native-flash-message';
+import { removePokemon, savePokemon } from 'src/redux/actions/pokemonSaveAction';
 
 const PokemonCatchScreen: FC<PageProps<'PokemonCatch'>> = ({ route }) => {
     const [isSecondaryImage, setIsSecondaryImage] = useState(false);
@@ -31,6 +32,7 @@ const PokemonCatchScreen: FC<PageProps<'PokemonCatch'>> = ({ route }) => {
 
     const pokemonDetailState: PokemonDetailStateProps = useSelector((state: State) => state.pokemonDetail);
 
+    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false)
     const onCatchPokemon = () => {
         setIsLoading(true)
@@ -39,6 +41,12 @@ const PokemonCatchScreen: FC<PageProps<'PokemonCatch'>> = ({ route }) => {
             const playerPower = Math.floor(Math.random() * pokemonHP) + 50;
 
             if (playerPower > pokemonHP) {
+                dispatch(savePokemon({
+                    name: pokemonDetailState.data.name,
+                    num: pokemonDetailState.data.num,
+                    image: isSecondaryImage ? secondaryUrl : firstUrl,
+                    type: []
+                }))
                 showMessage({
                     message: `Wooohoo... You Catch ${pokemonDetailState.data.name}!`,
                     type: "success",
@@ -54,6 +62,7 @@ const PokemonCatchScreen: FC<PageProps<'PokemonCatch'>> = ({ route }) => {
                     color: color.white,
                     backgroundColor: color.danger
                 })
+                dispatch(removePokemon(pokemonDetailState.data.num))
             }
             setIsLoading(false)
         }, 1000);

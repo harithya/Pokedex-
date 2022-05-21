@@ -1,8 +1,9 @@
 import { StatusBar, StyleSheet, Text, View } from 'react-native'
-import React, { FC } from 'react'
+import React, { FC, useRef } from 'react'
 import { color } from '@utils'
 import MainHeader from '../Header/MainHeader'
 import Loading from '../Loading'
+import Drawer from '../Drawer'
 
 export interface LayoutProps {
     isLoading?: boolean

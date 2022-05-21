@@ -1,55 +1,48 @@
-import { Animated, FlatList, FlatListProps, NativeScrollEvent, NativeSyntheticEvent, StyleSheet, Text, View } from 'react-native'
+import { Animated, FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useRef } from 'react'
-import { color, helper } from '@utils'
+import { color, constant, helper } from '@utils'
 
 const AnimationScreen = () => {
 
-    const scrollY = useRef(new Animated.Value(0)).current
+    const headerAnimation = useRef(new Animated.Value(0)).current
 
-    const scrollInterpolate = scrollY.interpolate({
-        inputRange: [0, 100],
-        outputRange: [1, 0],
-        extrapolate: "clamp"
-    })
+    headerAnimation.interpolate({
+        inputRange:[0,100],
+        outputRange:[0,100]
+    });
 
-    const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-        scrollY.setValue(e.nativeEvent.contentOffset.y - 100);
+    const onScroll = () => {
+
     }
+
     return (
-        <View style={styles.container}>
-            <Animated.View style={{
-                opacity: scrollInterpolate
-            }}>
+        <View>
+            <Animated.View>
                 <View style={styles.header} />
             </Animated.View>
             <FlatList
-                data={new Array(100).fill(0)}
-                contentContainerStyle={styles.contentContainer}
+                data={new Array(50).fill(0)}
+                contentContainerStyle={styles.flatlist}
                 renderItem={({ item }) => <View style={styles.card} />}
-                keyExtractor={(item, index) => index.toString()}
-                onScroll={onScroll}
             />
-        </View>
+        </View >
     )
 }
 
 export default AnimationScreen
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    header: {
+        height: 250,
+        backgroundColor: color.default
     },
     card: {
-        height: 120,
-        backgroundColor: helper.hexToRgb("#f54242", 0.5),
+        height: 100,
+        backgroundColor: "#c7c9cc",
         marginBottom: 10
     },
-    contentContainer: {
-        paddingHorizontal: 16,
-        paddingVertical: 16
-    },
-    header: {
-        backgroundColor: color.primary,
-        height: 100
+    flatlist: {
+        paddingHorizontal: constant.container,
+        paddingVertical: 15
     }
 })

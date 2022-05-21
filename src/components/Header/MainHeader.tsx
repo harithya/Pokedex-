@@ -1,16 +1,23 @@
-import { StyleSheet, Image, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Image, View, TouchableOpacity } from 'react-native'
+import React, { FC } from 'react'
 import { color, constant, theme } from '@utils'
 import SearchBar from '../SearchBar'
 import { Icon } from '@ui-kitten/components'
+import { useNavigation } from '@react-navigation/native'
+import { useNavigationProps } from '@types'
 
-const MainHeader = () => {
+const MainHeader: FC = () => {
+    const navigation = useNavigation<useNavigationProps>()
     return (
         <View>
             <View style={styles.header}>
-                <Icon name='menu-2-outline' fill={color.white} style={styles.icon} />
+                <TouchableOpacity>
+                    <Icon name='menu-2-outline' fill={color.white} style={styles.icon} />
+                </TouchableOpacity>
                 <Image source={require("../../assets/img/logo.png")} style={styles.logo} />
-                <Icon name='bookmark-outline' fill={color.white} style={styles.icon} />
+                <TouchableOpacity onPress={() => navigation.navigate("PokemonSave")}>
+                    <Icon name='bookmark-outline' fill={color.white} style={styles.icon} />
+                </TouchableOpacity>
             </View>
             <View style={styles.spacer} />
             <SearchBar />
