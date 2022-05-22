@@ -1,5 +1,5 @@
 import { Image, StyleSheet, TouchableNativeFeedback, View } from 'react-native'
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 import { Text } from '@ui-kitten/components'
 import { color, helper, theme } from '@utils'
 import { useNavigation } from '@react-navigation/native'
@@ -40,14 +40,14 @@ const PokemonSave: FC<Props> = ({ isSelected, name, image, num, onLongPress, sel
     )
 }
 
-export default PokemonSave
+export default memo(PokemonSave)
 
 const styles = StyleSheet.create({
     content: {
         width: "48%",
         ...theme.toCenter,
         paddingHorizontal: 10,
-        marginBottom: 15,
+        marginBottom: 16,
         paddingVertical: 10,
     },
     img: {

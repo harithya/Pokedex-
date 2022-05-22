@@ -18,10 +18,7 @@ export interface SearchStateProps {
     data: string
 }
 
-export interface ReducerProps {
-    type: string,
-    payload: any
-}
+export type ReducerProps = any;
 
 export interface StatsResultProps {
     total: number,
@@ -46,6 +43,10 @@ export interface PokemonDetailStateProps {
 
 export interface PokemonSaveStateProps {
     data: PokemonResultProps[]
+}
+
+export interface PokemonSelectedStateProps {
+    data: number[],
 }
 
 

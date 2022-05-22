@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     },
     flatlist: {
         paddingHorizontal: constant.container,
-        paddingVertical: 20
+        paddingTop: 20,
+        paddingBottom: 40
     }
 })

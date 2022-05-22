@@ -13,9 +13,9 @@ const SplashScreen: FC<PageProps> = ({ navigation }) => {
     return (
         <>
             <StatusBar barStyle={"light-content"} translucent backgroundColor={"transparent"} />
-            <ImageBackground source={require("../../assets/img/wp.webp")} style={styles.container}>
+            <View style={styles.container}>
                 <Image source={require("../../assets/img/logo.png")} style={styles.logo} />
-            </ImageBackground>
+            </View>
         </>
     )
 }
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     container: {
         ...theme.flex1,
         ...theme.toCenter,
+        backgroundColor: color.primary
     },
     logo: {
         height: 120,

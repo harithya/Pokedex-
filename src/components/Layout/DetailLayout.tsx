@@ -1,12 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
-import DetailHeader from '../Header/DetailHeader'
+import DetailHeader, { DetailHeaderProps } from '../Header/DetailHeader'
 import { color, theme } from '@utils'
 
-const DetailLayout: FC = ({ children }) => {
+type Props = DetailHeaderProps
+
+const DetailLayout: FC<Props> = ({ children, title, actionIcon, actionOnPress }) => {
     return (
         <View style={styles.container}>
-            <DetailHeader title='My Pokemon' />
+            <DetailHeader
+                title={title}
+                actionIcon={actionIcon}
+                actionOnPress={actionOnPress}
+            />
             <View style={theme.flex1}>
                 {children}
             </View>

@@ -1,5 +1,5 @@
 import { PokemonResultProps } from "@types"
-import store from "../store"
+import { store } from "../store"
 
 const savePokemon = (data: PokemonResultProps) => {
     const dataOld = store.getState().pokemonSave.data

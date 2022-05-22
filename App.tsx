@@ -10,8 +10,9 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import { LogBox } from 'react-native'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
-import store from 'src/redux/store'
+import { persistor, store } from 'src/redux/store'
 import FlashMessage from 'react-native-flash-message'
+import { PersistGate } from 'redux-persist/integration/react'
 
 LogBox.ignoreAllLogs();
 
@@ -19,15 +20,17 @@ const queryClient = new QueryClient()
 const App: FC = () => {
   return (
     <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <NavigationContainer>
-          <IconRegistry icons={EvaIconsPack} />
-          <ApplicationProvider {...eva} theme={{ ...eva.light, ...Color }} customMapping={{ ...eva.mapping, ...Mapping }}>
-            <StackNavigation />
-            <FlashMessage position={"center"} />
-          </ApplicationProvider>
-        </NavigationContainer>
-      </QueryClientProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <QueryClientProvider client={queryClient}>
+          <NavigationContainer>
+            <IconRegistry icons={EvaIconsPack} />
+            <ApplicationProvider {...eva} theme={{ ...eva.light, ...Color }} customMapping={{ ...eva.mapping, ...Mapping }}>
+              <StackNavigation />
+              <FlashMessage position={"center"} />
+            </ApplicationProvider>
+          </NavigationContainer>
+        </QueryClientProvider>
+      </PersistGate>
     </Provider>
   )
 }

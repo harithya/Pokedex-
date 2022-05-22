@@ -6,10 +6,12 @@ import { useNavigation } from '@react-navigation/native'
 import { useNavigationProps } from '@types'
 
 
-interface Props {
-    title: string
+export interface DetailHeaderProps {
+    title: string,
+    actionIcon?: string,
+    actionOnPress?: () => void
 }
-const DetailHeader: FC<Props> = ({ title }) => {
+const DetailHeader: FC<DetailHeaderProps> = ({ title, actionIcon, actionOnPress }) => {
     const navigation = useNavigation<useNavigationProps>();
     return (
         <>
@@ -20,7 +22,9 @@ const DetailHeader: FC<Props> = ({ title }) => {
                         <Icon name='arrow-back-outline' fill={color.white} style={styles.icon} />
                     </TouchableOpacity>
                     <Text status={"control"} category="h6" style={styles.title}>{title}</Text>
-                    <View style={styles.icon} />
+                    {actionIcon ? <TouchableOpacity onPress={actionOnPress}>
+                        <Icon name={actionIcon} fill={color.white} style={styles.icon} />
+                    </TouchableOpacity> : <View style={styles.icon} />}
                 </View>
             </View>
         </>
