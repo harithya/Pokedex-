@@ -1,4 +1,4 @@
-![Preview Web](https://res.cloudinary.com/cv-abdi-creative/image/upload/v1653276498/portofolio/pokemon_polk9q.png)
+![Preview Web](https://github.com/harithya/Pokedex-/blob/main/preview/pokemon.png?raw=true)
 
 <p align="center">Go to the <a href="https://harithya.vercel.app/">realeses</a>. to download the latest APK.
 </p>
