@@ -1,6 +1,6 @@
 ![Preview Web](https://github.com/harithya/Pokedex-/blob/main/preview/pokemon.png?raw=true)
 
-<p align="center">Go to the <a href="https://harithya.vercel.app/">realeses</a>. to download the latest APK.
+<p align="center">Go to the <a href="https://github.com/harithya/Pokedex-/releases/tag/v.1.0.0">realeses</a>. to download the latest APK.
 </p>
 
 ## Pokedex Project
