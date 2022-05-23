@@ -6,12 +6,15 @@ import { Icon } from '@ui-kitten/components'
 import { useNavigation } from '@react-navigation/native'
 import { useNavigationProps } from '@types'
 
-const MainHeader: FC = () => {
+interface Props {
+    onMenuPress?: () => void
+}
+const MainHeader: FC<Props> = ({ onMenuPress }) => {
     const navigation = useNavigation<useNavigationProps>()
     return (
         <View>
             <View style={styles.header}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={onMenuPress}>
                     <Icon name='menu-2-outline' fill={color.white} style={styles.icon} />
                 </TouchableOpacity>
                 <Image source={require("../../assets/img/logo.png")} style={styles.logo} />

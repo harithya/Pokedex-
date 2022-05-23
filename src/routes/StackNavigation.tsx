@@ -1,6 +1,6 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AnimationScreen, HomeScreen, PokemonCatchScreen, PokemonSaveScreen, PokemonShowScreen, SplashScreen } from '@pages';
+import { AboutScreen, AnimationScreen, HomeScreen, PokemonCatchScreen, PokemonSaveScreen, PokemonShowScreen, SplashScreen } from '@pages';
 
 
 const Stack = createNativeStackNavigator();
@@ -12,6 +12,7 @@ export default function StackNavigation() {
             <Stack.Screen name="PokemonShow" component={PokemonShowScreen} />
             <Stack.Screen name="PokemonCatch" component={PokemonCatchScreen} />
             <Stack.Screen name="PokemonSave" component={PokemonSaveScreen} />
+            <Stack.Screen name="About" component={AboutScreen} />
         </Stack.Navigator>
     )
 }

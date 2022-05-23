@@ -3,7 +3,8 @@ type RootStackList = {
     Home: undefined,
     PokemonShow: { name: string },
     PokemonCatch: { number: number, name: string },
-    PokemonSave: undefined
+    PokemonSave: undefined,
+    About: undefined
 }
 
 

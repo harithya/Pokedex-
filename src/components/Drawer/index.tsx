@@ -1,28 +1,22 @@
-import { DrawerLayoutAndroid, Image, StyleSheet, Text, View } from 'react-native'
+import { Linking, StyleSheet, View } from 'react-native'
 import React, { FC } from 'react'
-import { color, theme } from '@utils'
+import { theme } from '@utils'
 import Menu from '../Menu'
+import { useNavigation } from '@react-navigation/native'
+import { useNavigationProps } from '@types'
+import { SheetManager } from 'react-native-actions-sheet'
 
+const Drawer: FC = () => {
+    const navigation = useNavigation<useNavigationProps>()
 
-const Drawer: FC = ({ children, }) => {
+    const handleNavigation = (callBack?: void) => {
+        SheetManager.hide("drawerId");
+        callBack
+    }
     return (
-        <View style={theme.flex1}>
-            <View style={styles.head}>
-                <Image source={require("../../assets/img/logo.png")} style={styles.logo} />
-            </View>
-
-            <View>
-                <Menu
-                    title='Home'
-                    icon='compass-outline'
-                    onPress={() => { }}
-                />
-                <Menu
-                    title='Information'
-                    icon='info-outline'
-                    onPress={() => { }}
-                />
-            </View>
+        <View>
+            <Menu title='About' icon='info-outline' onPress={() => handleNavigation(navigation.navigate("About"))} />
+            <Menu title='Source Code' icon='code-outline' onPress={() => Linking.openURL("https://github.com/harithya/Pokedex-")} />
         </View>
     )
 }

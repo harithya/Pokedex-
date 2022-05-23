@@ -4,6 +4,7 @@ import PokemonShowScreen from "./pokemon/PokemonShowScreen";
 import AnimationScreen from "./animation/AnimationScreen";
 import PokemonCatchScreen from "./pokemon/PokemonCatchScreen";
 import PokemonSaveScreen from "./pokemon/PokemonSaveScreen";
+import AboutScreen from "./about/AboutScreen";
 
 export {
     SplashScreen,
@@ -11,5 +12,6 @@ export {
     PokemonShowScreen,
     AnimationScreen,
     PokemonCatchScreen,
-    PokemonSaveScreen
+    PokemonSaveScreen,
+    AboutScreen
 }
