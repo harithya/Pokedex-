@@ -1,4 +1,4 @@
-![Preview Web](https://github.com/harithya/Pokedex-/blob/main/preview/pokemon.png?raw=true)
+![Preview Web](https://raw.githubusercontent.com/harithya/Pokedex-/main/preview/pokedex.jpg)
 
 <p align="center">Go to the <a href="https://github.com/harithya/Pokedex-/releases/tag/v.1.0.0">realeses</a>. to download the latest APK.
 </p>
