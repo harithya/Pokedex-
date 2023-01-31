@@ -1,4 +1,4 @@
-import { Image, ImageBackground, StatusBar, StyleSheet, View, Linking, TouchableOpacity } from 'react-native'
+import { Image, ImageBackground, StatusBar, StyleSheet, View, TouchableOpacity } from 'react-native'
 import React, { FC, useEffect, useState } from 'react'
 import { color, constant, helper, theme } from '@utils'
 import { PageProps, PokemonDetailStateProps, useNavigationProps } from '@types';
@@ -88,11 +88,11 @@ const PokemonCatchScreen: FC<PageProps<'PokemonCatch'>> = ({ route }) => {
                     </View>
                 </View>
                 <View style={[theme.flex1, theme.toCenter]}>
-                    {/* <GifImage
+                    <Image
                         source={{ uri: isSecondaryImage ? secondaryUrl : firstUrl }}
                         style={[styles.img, isSecondaryImage && styles.imgSecondary]}
                         resizeMode="contain"
-                    /> */}
+                    />
                     <TouchableOpacity style={styles.touchableBall} onPress={onCatchPokemon}>
                         <Image source={require("../../assets/img/poke-game.png")} style={styles.ball} />
                     </TouchableOpacity>
@@ -157,7 +157,8 @@ const styles = StyleSheet.create({
         position: "absolute",
         right: constant.container,
         left: constant.container,
-        top: 40
+        top: 40,
+        zIndex: 9999
     },
     action: {
         height: 30,

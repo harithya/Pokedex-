@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native'
 import { PokemonResultProps, useNavigationProps } from '@types'
 
 const Pokemon: FC<PokemonResultProps> = (props) => {
-    // console.log("reload")
     const getColor = () => {
         const pokemonColor: any = props.type[0].toLowerCase()
         const background: any = color
