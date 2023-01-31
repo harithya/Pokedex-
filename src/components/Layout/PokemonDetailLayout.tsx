@@ -1,5 +1,5 @@
 import { Animated, Easing, Image, NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet, View } from 'react-native'
-import React, { FC, useRef } from 'react'
+import React, { FC, PropsWithChildren, useRef } from 'react'
 import { color, helper, theme } from '@utils'
 import PokemonDetailHeader from '../Header/PokemonDetailHeader'
 import Loading from '../Loading'
@@ -10,7 +10,7 @@ import { State } from 'src/redux/reducer'
 interface Props {
     isLoading: boolean,
 }
-const PokemonDetailLayout: FC<Props> = ({ children, isLoading }) => {
+const PokemonDetailLayout: FC<PropsWithChildren<Props>> = ({ children, isLoading }) => {
     const pokemonDetailState: PokemonDetailStateProps = useSelector((state: State) => state.pokemonDetail);
     const headerAnimation = useRef(new Animated.Value(0)).current
 

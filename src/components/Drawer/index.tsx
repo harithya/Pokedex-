@@ -1,6 +1,5 @@
-import { Linking, StyleSheet, View } from 'react-native'
+import { Linking, View } from 'react-native'
 import React, { FC } from 'react'
-import { theme } from '@utils'
 import Menu from '../Menu'
 import { useNavigation } from '@react-navigation/native'
 import { useNavigationProps } from '@types'
@@ -23,17 +22,3 @@ const Drawer: FC = () => {
 
 export default Drawer
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    logo: {
-        height: 70,
-        width: 200,
-        resizeMode: "contain"
-    },
-    head: {
-        ...theme.toCenter,
-        paddingVertical: 20
-    }
-})

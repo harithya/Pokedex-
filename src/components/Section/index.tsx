@@ -1,5 +1,5 @@
 import { StyleProp, StyleSheet, View, ViewProps, ViewStyle } from 'react-native'
-import React, { FC } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import { Text } from '@ui-kitten/components'
 import { constant, theme } from '@utils'
 
@@ -7,7 +7,7 @@ interface Props {
     title: string,
     style?: StyleProp<ViewStyle>
 }
-const Section: FC<Props> = ({ children, title, style }) => {
+const Section: FC<PropsWithChildren<Props>> = ({ children, title, style }) => {
     return (
         <View style={styles.section}>
             <View style={styles.header}>

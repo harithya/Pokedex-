@@ -1,19 +1,15 @@
-import { Animated, FlatList, StyleSheet, Text, View } from 'react-native'
+import { Animated, FlatList, StyleSheet, View } from 'react-native'
 import React, { useRef } from 'react'
-import { color, constant, helper } from '@utils'
+import { color, constant } from '@utils'
 
 const AnimationScreen = () => {
 
     const headerAnimation = useRef(new Animated.Value(0)).current
 
     headerAnimation.interpolate({
-        inputRange:[0,100],
-        outputRange:[0,100]
+        inputRange: [0, 100],
+        outputRange: [0, 100]
     });
-
-    const onScroll = () => {
-
-    }
 
     return (
         <View>

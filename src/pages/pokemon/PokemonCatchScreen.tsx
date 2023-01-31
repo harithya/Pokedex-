@@ -1,7 +1,6 @@
 import { Image, ImageBackground, StatusBar, StyleSheet, View, Linking, TouchableOpacity } from 'react-native'
 import React, { FC, useEffect, useState } from 'react'
 import { color, constant, helper, theme } from '@utils'
-import GifImage from '@lowkey/react-native-gif';
 import { PageProps, PokemonDetailStateProps, useNavigationProps } from '@types';
 import { Icon, Text } from '@ui-kitten/components';
 import axios from 'axios';
@@ -89,11 +88,11 @@ const PokemonCatchScreen: FC<PageProps<'PokemonCatch'>> = ({ route }) => {
                     </View>
                 </View>
                 <View style={[theme.flex1, theme.toCenter]}>
-                    <GifImage
+                    {/* <GifImage
                         source={{ uri: isSecondaryImage ? secondaryUrl : firstUrl }}
                         style={[styles.img, isSecondaryImage && styles.imgSecondary]}
                         resizeMode="contain"
-                    />
+                    /> */}
                     <TouchableOpacity style={styles.touchableBall} onPress={onCatchPokemon}>
                         <Image source={require("../../assets/img/poke-game.png")} style={styles.ball} />
                     </TouchableOpacity>

@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, BackHandler, Alert } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { DetailLayout, Empty, PokemonSave } from '@components'
 import { constant, theme } from '@utils'
 import { PokemonResultProps, PokemonSaveStateProps, PokemonSelectedStateProps } from '@types'

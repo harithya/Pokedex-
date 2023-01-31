@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { FC } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import DetailHeader, { DetailHeaderProps } from '../Header/DetailHeader'
 import { color, theme } from '@utils'
 
 type Props = DetailHeaderProps
 
-const DetailLayout: FC<Props> = ({ children, title, actionIcon, actionOnPress }) => {
+const DetailLayout: FC<PropsWithChildren<Props>> = ({ children, title, actionIcon, actionOnPress }) => {
     return (
         <View style={styles.container}>
             <DetailHeader
